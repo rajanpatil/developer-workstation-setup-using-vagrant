@@ -1,6 +1,6 @@
 ## Create workstation for java, scala, groovy and python developers
 
-#### Pre-requisites
+### Pre-requisites
 Following tools should be installed on your host OS
 * virtual box
 * vagrant
@@ -8,7 +8,7 @@ Following tools should be installed on your host OS
 * `~/projects` code repositories cloned here will be mounted to `/vagrant/home/projects`
 * clone [developer-workstation-setup-using-vagrant](git@github.com:rajanpatil/developer-workstation-setup-using-vagrant.git)
 
-## How to setup
+### How to setup
 * Once pre-requisites are met, you can checkout or copy this repository on your host OS.
 * Go to this repository with `gitbash` and run `vagrant up` command. This activity is one time and might take 10 to 15 mins.
 * Once setup is finished, you can ssh into your guest with `vagrant ssh` command.
@@ -23,7 +23,7 @@ Following tools should be installed on your host OS
   For more information please visit [vagrant docs](https://www.vagrantup.com/docs/cli/)
 
 
-#### Following tools are installed and configured
+### Following tools are installed and configured
 
 * jdk
   * openjdk-8-jdk
@@ -53,7 +53,6 @@ Following tools should be installed on your host OS
    * ```~/projects -> /home/vagrant/projects``` (clone code repositories in `~/projects`)
 
 ### Resources
-For more information please visit 
 * [vagrant](https://www.vagrantup.com/intro/index.html)
 * [jenv](https://github.com/gcuisinier/jenv)
 * [pyenv](https://github.com/pyenv/pyenv)
