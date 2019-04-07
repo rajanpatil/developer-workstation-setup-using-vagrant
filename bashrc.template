@@ -17,6 +17,8 @@ export PATH="$GRADLE_HOME/bin:$PATH"
 export PATH="$HOME_BIN/:$PATH"
 export PATH="$HOME/.local/bin/:$PATH"
 
+export PATH="$HOME/.tfenv/bin:$PATH"
+
 # enable fish to be default shell
 # /usr/bin/fish
 

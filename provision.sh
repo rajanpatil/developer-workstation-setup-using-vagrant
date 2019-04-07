@@ -90,10 +90,19 @@ installPyenv()
     eval "$(pyenv init -)"
 }
 
+installTfenv()
+{
+    echo 'Installing tfenv'
+    git clone https://github.com/tfutils/tfenv.git ~/.tfenv >/dev/null 2>&1
+    export PATH="$HOME/.tfenv/bin:$PATH"
+}
+
+
 installEnvManagers()
 {
     installJenv
     installPyenv
+    installTfenv
 }
 
 createBashrcAndBashProfile()
@@ -118,6 +127,23 @@ setDefaultPython()
     echo "Setting python $default_python_version globally"
     pyenv global $default_python_version
 }
+
+installTerraform()
+{
+    terraform_version=$1
+    echo "Installing terraform $terraform_version"
+    tfenv install $terraform_version  >/dev/null 2>&1
+}
+
+installPacker()
+{
+    packer_version=$1
+    echo "Installing packer $packer_version"
+    download "packer_${packer_version}_linux_amd64.zip" "https://releases.hashicorp.com/packer/${packer_version}/packer_${packer_version}_linux_amd64.zip"
+    unzip packer_${packer_version}_linux_amd64.zip >/dev/null 2>&1
+    rm -rf packer_${packer_version}_linux_amd64.zip
+}
+
 
 installMaven()
 {
@@ -182,6 +208,7 @@ provision() {
     installOpenjdk "8"
     installOpenjdk "9"
     installOpenjdk "10"
+    installOpenjdk "11"
     setDefaultJava "1.8"
     installMaven
     createBashrcAndBashProfile
@@ -189,6 +216,8 @@ provision() {
     setDefaultPython "2.7.7"
     installDocker
     installAWSCLI
+    installTerraform "0.11.7"
+    installPacker "1.0.0"
     installPython "3.5.0"
     installMongo
     installGroovy
