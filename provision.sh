@@ -241,10 +241,10 @@ provision() {
     setDefaultPython "3.7.5"
     installPipPackages
     #installMongo
-    installGroovy
-    installGradle
-    installScala
-    installSBT
+    #installGroovy
+    #installGradle
+    #installScala
+    #installSBT
 }
 
 if [ ! -f "/var/vagrant_provision" ]; then
