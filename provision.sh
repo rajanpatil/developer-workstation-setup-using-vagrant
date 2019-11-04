@@ -34,7 +34,7 @@ installPackages()
     installPackage zip
     installPackage unzip
     # dependencies for pyenv
-    installPackage make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev
+    installPackage make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev ansible
 }
 
 createAndMoveToHomeBinDir()
@@ -128,6 +128,26 @@ setDefaultPython()
     pyenv global $default_python_version
 }
 
+installPipPackage()
+{
+	pip_package=$1
+	echo "Installing Pip3 package(s): $pip_package"
+	pip3 install -q $pip_package
+}
+
+installPipPackages()
+{
+	installPipPackage pandas
+	installPipPackage seaborn
+	installPipPackage boto3
+	installPipPcakage pyspark
+	installPipPackage scikit-learn
+	installPipPackage tensorflow
+	installPipPackage keras
+	installPipPackage jupyterlab
+	installPipPackage dbt
+}
+
 installTerraform()
 {
     terraform_version=$1
@@ -206,20 +226,21 @@ provision() {
     installPackages
     installEnvManagers
     installOpenjdk "8"
-    installOpenjdk "9"
-    installOpenjdk "10"
+    #installOpenjdk "9"
+    #installOpenjdk "10"
     installOpenjdk "11"
-    setDefaultJava "1.8"
+    setDefaultJava "11"
     installMaven
     createBashrcAndBashProfile
-    installPython "2.7.7"
-    setDefaultPython "2.7.7"
-    installDocker
+    #installPython "2.7.7"
+    #installDocker
     installAWSCLI
-    installTerraform "0.11.7"
-    installPacker "1.0.0"
-    installPython "3.5.0"
-    installMongo
+    installTerraform "0.12.13"
+    #installPacker "1.0.0"
+    installPython "3.7.5"
+    setDefaultPython "3.7.5"
+    installPipPackages
+    #installMongo
     installGroovy
     installGradle
     installScala
